@@ -1,1 +1,74 @@
 @import '~bootstrap/scss/bootstrap';
+
+// styles for a basic tic tac toe game
+.body {
+
+  .btn-group {
+    position: absolute;
+  }
+
+  footer {
+    background-color: blue;
+    height: 4rem;
+  }
+
+  h1 {
+    align-self: center;
+    font-size: 4em;
+  }
+
+  header {
+    background-color: pink;
+    height: 8rem;
+    align-items: flex-end;
+    justify-content: flex-end;
+  }
+
+  main {
+    flex-direction: column;
+    background-color: beige;
+    height: calc(100vh - 12rem);
+    align-items: center;
+    justify-content: center;
+
+    .game {
+      align-items: center;
+    }
+
+    .board {
+      padding: 0;
+      height: 440px;
+      width: 440px;
+
+      .top {
+        border-bottom: 4px solid black;
+      }
+
+      .bottom {
+        border-top: 4px solid black;
+      }
+
+      .left {
+        border-right: 4px solid black;
+      }
+
+      .right {
+        border-left: 4px solid black;
+      }
+
+      .cell {
+        float: left;
+        width: calc(100% / 3);
+        height: calc(100% / 3);
+      }
+    }
+
+    .logins {
+      margin-top: 2rem;
+
+      button {
+        margin: .5rem;
+      }
+    }
+  }
+}
