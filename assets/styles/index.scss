@@ -8,8 +8,11 @@
   }
 
   footer {
+    padding: 2em;
     background-color: blue;
     height: 4rem;
+    justify-content: flex-end;
+    align-items: flex-end;
   }
 
   h1 {
@@ -72,6 +75,14 @@
 
       input {
         margin: .5rem;
+      }
+
+      .modal-header {
+        align-items: center;
+
+        > h5 {
+          font-size: 2.5rem;
+        }
       }
     }
   }
