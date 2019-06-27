@@ -1,27 +1,38 @@
 const api = require('./api.js')
 const ui = require('./ui.js')
-const getFormFields = require('../../../lib/get-form-fields.js')
+const store = require('./../store')
 
-const gameboard = {
-  cells: ['', '', '', '', '', '', '', '', ''],
-  over: false,
-  player_x: true
-}
+let playerX = true
 
 // adds 'x' or 'o' to the clicked cell if there isnt already a piece there
-const addMove = event => {
+const onAddMove = event => {
+  event.preventDefault()
   const index = event.target.cellIndex
-  if (gameboard.cells[index] === '') {
-    if (gameboard.player_x) {
-      gameboard.cells[index] = 'x'
-      gameboard.player_x = false
+  if (store.gameData.cells[index] === '') {
+    if (playerX) {
+      $(`#${index}`).text('X')
+      store.gameData.cells[index] = 'x'
+      playerX = false
     } else {
-      gameboard.cells[index] = 'o'
-      gameboard.player_x = true
+      $(`#${index}`).text('O')
+      store.gameData.cells[index] = 'x'
+      playerX = true
     }
   }
+
+  api.addMove()
+    .then(console.log)
+    .catch(console.log)
+}
+
+const onNewGame = event => {
+  event.preventDefault()
+  api.newGame()
+    .then(ui.newGameSuccess)
+    .catch(ui.newGameFail)
 }
 
 module.exports = {
-  addMove
+  onAddMove,
+  onNewGame
 }

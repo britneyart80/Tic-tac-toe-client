@@ -11,6 +11,7 @@ const authEvents = require('./auth/events.js')
 
 $(() => {
   $('.cell').on('click', gameboardEvents.onAddMove)
+  $('#new-game').on('click', gameboardEvents.onNewGame)
   $('#sign-up').on('submit', authEvents.onSignUp)
   $('#sign-in').on('submit', authEvents.onSignIn)
   $('#sign-out').on('click', authEvents.onSignOut)

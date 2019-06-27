@@ -3,8 +3,15 @@
 
 .body {
 
+  .row {
+    margin-right: 0;
+  }
+  padding: 0;
+
   #drop-down {
     position: absolute;
+    top: 6rem;
+    right: 0;
   }
 
   footer {
@@ -15,18 +22,32 @@
     justify-content: flex-end;
     padding: 2em;
   }
-
   h1 {
-    align-self: center;
+    position: relative;
     font-size: 4em;
   }
 
   header {
-    align-items: flex-end;
+    align-items: center;
     background-color: pink;
     height: 8rem;
-    justify-content: flex-end;
+    justify-content: center;
   }
+
+  section {
+      float: left;
+      height: 75vh;
+      width: 0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: space-around;
+
+      .sidebar {
+        padding: 1rem;
+        text-align: center;
+      }
+    }
 
   main {
     align-items: center;
@@ -35,14 +56,18 @@
     height: calc(100vh - 12rem);
     justify-content: center;
 
+    .row {
+      padding-left: 3vw;
+    }
+
     .game {
-      align-items: center;
+      justify-content: center;
     }
 
     .board {
-      height: 495px;
+      height: 450px;
       padding: 0;
-      width: 495px;
+      width: 450px;
 
       .top {
         border-bottom: 4px solid black;
@@ -64,6 +89,12 @@
         float: left;
         height: calc(100% / 3);
         width: calc(100% / 3);
+
+      }
+
+      td {
+        font-size: 100px;
+        text-align: center;
       }
     }
 
@@ -76,6 +107,27 @@
         margin: 0;
       }
     }
+
+    .game-data {
+      font-size: 1rem;
+      margin-left: 2rem;
+      right: 5vw;
+      width: 20vw;
+
+      .feedback {
+        background-color: grey;
+      }
+
+      .data {
+        background-color: white;
+        height: 30vh;
+      }
+
+      #new-game {
+        align-self: flex-end;
+        margin: .5rem 0 .5rem 0;
+    }
+  }
 
     .modal {
       button {
@@ -112,10 +164,30 @@
     }
   }
 
-  @media (max-width: 550px) {
-    main .board {
-      height: 90vw;
-      width: 90vw;
+  @media (max-width: 650px) {
+
+    main {
+      flex-direction: row;
+
+      .game-data {
+        font-size: 0.85rem;
+
+        .data {
+          height: 5vh;
+          width: 40vw;
+        }
+      }
+
+      .board {
+        margin-top: 1rem;
+        height: 70vw;
+        width: 70vw;
+
+        td {
+          font-size:  20vw;
+          text-align: center;
+        }
+      }
     }
 
     h1 {

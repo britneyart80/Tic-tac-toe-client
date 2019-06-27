@@ -15,6 +15,8 @@ const failedSignUp = () => {
 }
 
 const successfulSignIn = response => {
+  $('.game-data').show()
+  $('section').css('width', '20vw').show()
   $('form').trigger('reset')
   $('#sign-in-modal').modal('hide')
   $('.logins').hide()
