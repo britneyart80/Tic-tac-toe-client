@@ -12,20 +12,24 @@
       <script src="public/application.js" type="text/javascript" charset="utf-8" defer></script>
     </head>
     <body class='body container-fluid basic'>
+
+        <!-- Header and dropdown -->
         <header class='row'>
           <h1 class='mx-auto'>TIC-TAC-TOE</h1>
-          <!-- Drop downn where you can change pass and sign out -->
-          <div class="btn-group invisible">
-            <button type="button" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          <!-- Drop down where you can change pass and sign out -->
+          <div id='drop-down' class="invisible">
+            <button type="button" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="font-size:12px"> Account
             </button>
             <div class="dropdown-menu dropdown-menu-right">
-              <button class="dropdown-item" type="button">Change Password</button>
-              <button class="dropdown-item" type="button">Sign Out</button>
+              <button id="change-password" type="button">Change Password</button>
+              <button id="sign-out" type="button">Sign Out</button>
             </div>
           </div>
         </header>
 
         <main class='row'>
+          <p class='main-message'></p>
+
           <!-- The game -->
           <div class='game mx-auto'>
             <!-- The gameboard and cells -->
@@ -57,8 +61,11 @@
 
           <!-- Signing In and Signing Up -->
           <div class='logins row'>
+
+            <p class="logins-message">Sign in or Sign up to start the game!<p>
+
             <!-- Buttons for sign in and sign up -->
-            <div class='login-buttons'>
+            <div class="login-buttons">
               <button type="button" class="sign-in btn btn-primary" data-toggle="modal" data-target="#sign-in-modal">
                 Sign In
               </button>
@@ -68,11 +75,11 @@
             </div>
 
             <!-- Modal for Signing In -->
-            <div class="modal fade" id="sign-in-modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+            <div class="modal fade" id="sign-in-modal" tabindex="-1" role="dialog" aria-labelledby="signInModalCenterTitle" aria-hidden="true">
               <div class="modal-dialog modal-dialog-centered" role="document">
                 <div class="modal-content">
                   <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalCenterTitle">Sign In</h5>
+                    <h5 class="modal-title" id="signInModalCenterTitle">Sign In</h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                       <span aria-hidden="true">&times;</span>
                     </button>
@@ -83,6 +90,7 @@
                       <input type="email" placeholder="Email" name="credentials[email]">
                       <input type="password" placeholder="Password" name="credentials[password]">
                       </div>
+                      <p class="logins-fail-message" style="color:red"></p>
                       <button>Sign in</button>
                     </form>
                   </div>
@@ -91,11 +99,11 @@
             </div>
 
             <!-- Modal for Signing Up -->
-            <div class="modal fade" id="sign-up-modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+            <div class="modal fade" id="sign-up-modal" tabindex="-1" role="dialog" aria-labelledby="signUpModalCenterTitle" aria-hidden="true">
               <div class="modal-dialog modal-dialog-centered" role="document">
                 <div class="modal-content">
                   <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalCenterTitle">Sign Up</h5>
+                    <h5 class="modal-title" id="signUpModalCenterTitle">Sign Up</h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                       <span aria-hidden="true">&times;</span>
                     </button>
@@ -107,6 +115,7 @@
                       <input type="password" placeholder="Password" name="credentials[password]">
                       <input type="password" placeholder="Confirm password" name="credentials[password_confirmation]">
                       </div>
+                      <p class="logins-fail-message" style="color:red"></p>
                       <button>Sign Up!</button>
                     </form>
                   </div>
@@ -114,10 +123,11 @@
               </div>
             </div>
           </div>
+
         </main>
 
       <footer class='row fixed-bottom'>
-        <h4> Created by Britney Chen </h4>
+        <p> Created by Britney Chen </p>
       </footer>
     </body>
 </html>
