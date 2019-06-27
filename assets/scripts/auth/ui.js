@@ -30,15 +30,28 @@ const failedSignIn = () => {
 }
 
 const successfulSignOut = () => {
-  $('.main-message').text('You were signed out').css('color', 'green').show()
-  $('.main-message').delay(2000).fadeOut()
+  $('.main-message').text('You were signed out').css('background-color', 'green').show()
+  $('.main-message').delay(2500).fadeOut()
   $('.logins').show()
   $('#drop-down').attr('class', 'invisible')
 }
 
 const failedSignOut = () => {
-  $('.main-message').text('Error: Failed to sign out').css('color', 'red').show()
-  $('.main-message').delay(2000).fadeOut()
+  $('.main-message').text('Error: Failed to sign out').css('background-color', 'red').show()
+  $('.main-message').delay(2500).fadeOut()
+}
+
+const successfulPasswordChange = () => {
+  $('form').trigger('reset')
+  $('#change-password-modal').modal('hide')
+  $('.main-message').text('Password successfully changed').css('background-color', 'green').show()
+  $('.main-message').delay(2500).fadeOut()
+}
+
+const failedPasswordChange = () => {
+  $('form').trigger('reset')
+  $('.logins-fail-message').text('Error: Failed to change password')
+  $('.logins-fail-message').delay(3000).fadeOut()
 }
 
 module.exports = {
@@ -47,5 +60,7 @@ module.exports = {
   successfulSignIn,
   failedSignIn,
   successfulSignOut,
-  failedSignOut
+  failedSignOut,
+  successfulPasswordChange,
+  failedPasswordChange
 }
