@@ -14,7 +14,30 @@ const retrieveGame = () => {
   })
 }
 
-const updateGame = () => {
+const getAllGames = () => {
+  return $.ajax({
+    url: config.apiUrl + '/games',
+    method: 'GET',
+    contentType: 'application/json',
+    headers: {
+      Authorization: 'Token token=' + store.user.token
+    }
+  })
+}
+
+const getGamesUnfinished = () => {
+  return $.ajax({
+    url: config.apiUrl + '/games?over=false',
+    method: 'GET',
+    contentType: 'application/json',
+    headers: {
+      Authorization: 'Token token=' + store.user.token
+    }
+  })
+}
+
+const updateGame = (index, value) => {
+  console.log(store.gameData)
   return $.ajax({
     url: config.apiUrl + '/games/' + store.gameData.id,
     method: 'PATCH',
@@ -22,7 +45,13 @@ const updateGame = () => {
       Authorization: 'Token token=' + store.user.token
     },
     data: {
-      'game': store.gameData
+      'game': {
+        'cell': {
+          'index': index,
+          'value': value
+        },
+        'over': store.gameData.over
+      }
     }
   })
 }
@@ -41,5 +70,7 @@ const newGame = () => {
 module.exports = {
   retrieveGame,
   updateGame,
-  newGame
+  newGame,
+  getAllGames,
+  getGamesUnfinished
 }
