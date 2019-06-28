@@ -4,7 +4,6 @@ const config = require('./../config')
 const store = require('./../store.js')
 
 const retrieveGame = () => {
-  console.log(store.gameData)
   return $.ajax({
     url: config.apiUrl + '/games/' + store.gameData.id,
     method: 'GET',
@@ -15,8 +14,7 @@ const retrieveGame = () => {
   })
 }
 
-const addMove = () => {
-  console.log(store.gameData)
+const updateGame = () => {
   return $.ajax({
     url: config.apiUrl + '/games/' + store.gameData.id,
     method: 'PATCH',
@@ -42,6 +40,6 @@ const newGame = () => {
 
 module.exports = {
   retrieveGame,
-  addMove,
+  updateGame,
   newGame
 }
