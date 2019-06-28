@@ -10,33 +10,36 @@ const successfulSignUp = response => {
 
 const failedSignUp = () => {
   $('form').trigger('reset')
-  $('.logins-fail-message').text('This username is taken or passwords are not the same.')
-  $('.logins-fail-message').delay(3000).fadeOut()
+  $('.logins-fail-message').text('This username is taken or passwords are not the same.').show()
+  $('.logins-fail-message').delay(2500).fadeOut()
 }
 
 const successfulSignIn = response => {
+  // stores user sign-in token
+  store.user = response.user
+  // clears starter board
   for (let i = 0; i < 9; i++) {
     $(`#${i}`).text('')
   }
+  $('.dropdown-toggle').text(`${store.user.email}`)
+  $('.logins-message').text('Sign in or Sign up to start the game!')
   $('.game-data').attr('class', 'game-data visible')
-  $('.feedback').text('Click New Game to play!')
+  $('.feedback').text('Click New Game to play!').show()
   $('section').attr('class', 'visible')
   $('form').trigger('reset')
   $('#sign-in-modal').modal('hide')
   $('.logins').hide()
   $('#drop-down').attr('class', 'visible')
-  // stores user sign-in token
-  store.user = response.user
 }
 
 const failedSignIn = () => {
   $('form').trigger('reset')
-  $('.logins-fail-message').text('Username or password is incorrect')
-  $('.logins-fail-message').delay(3000).fadeOut()
+  $('.logins-fail-message').text('Username or password is incorrect').show()
+  $('.logins-fail-message').delay(2500).fadeOut()
 }
 
 const successfulSignOut = () => {
-  $('.game-data').attr('class', 'invisible')
+  $('.game-data').attr('class', 'game-data invisible')
   $('section').attr('class', 'invisible')
   $('.main-message').text('You were signed out').css('background-color', 'green').show()
   $('.main-message').delay(2500).fadeOut()
@@ -59,7 +62,7 @@ const successfulPasswordChange = () => {
 const failedPasswordChange = () => {
   $('form').trigger('reset')
   $('.logins-fail-message').text('Error: Failed to change password')
-  $('.logins-fail-message').delay(3000).fadeOut()
+  $('.logins-fail-message').delay(2500).fadeOut()
 }
 
 module.exports = {

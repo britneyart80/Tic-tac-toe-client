@@ -3,17 +3,6 @@
 const config = require('./../config')
 const store = require('./../store.js')
 
-const retrieveGame = () => {
-  return $.ajax({
-    url: config.apiUrl + '/games/' + store.gameData.id,
-    method: 'GET',
-    contentType: 'application/json',
-    headers: {
-      Authorization: 'Token token=' + store.user.token
-    }
-  })
-}
-
 const getAllGames = () => {
   return $.ajax({
     url: config.apiUrl + '/games',
@@ -37,9 +26,8 @@ const getGamesUnfinished = () => {
 }
 
 const updateGame = (index, value) => {
-  console.log(store.gameData)
   return $.ajax({
-    url: config.apiUrl + '/games/' + store.gameData.id,
+    url: config.apiUrl + '/gaes/' + store.gameData.id,
     method: 'PATCH',
     headers: {
       Authorization: 'Token token=' + store.user.token
@@ -68,7 +56,6 @@ const newGame = () => {
 }
 
 module.exports = {
-  retrieveGame,
   updateGame,
   newGame,
   getAllGames,

@@ -26,7 +26,7 @@ const newGameSuccess = gameData => {
 }
 
 const newGameFail = gameData => {
-  console.log('new game failed')
+  $('.main-message').text('An error occured').css('background-color', 'red').show()
 }
 
 const updateGameSuccess = gameData => {
@@ -34,6 +34,9 @@ const updateGameSuccess = gameData => {
 }
 
 const updateGameFail = gameData => {
+  for (let i = 0; i < 9; i++) {
+    $(`#${i}`).text('')
+  }
   $('.main-message').text('An error occured').css('background-color', 'red').show()
   $('.main-message').delay(2000).fadeOut()
 }
@@ -66,7 +69,6 @@ const countWins = allGames => {
     const curr = allGames.games[i]
     for (let i = 0; i < 9; i += 3) {
       if (allSame(curr.cells[i], curr.cells[i + 1], curr.cells[i + 2])) {
-        console.log('a win!')
         wins++
       }
     }

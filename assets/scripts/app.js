@@ -6,7 +6,6 @@
 const gameboardEvents = require('./gameboard/events.js')
 const authEvents = require('./auth/events.js')
 const themeEvents = require('./themes/events.js')
-const store = require('./store')
 
 // use require without a reference to ensure a file is bundled
 // require('./example')
