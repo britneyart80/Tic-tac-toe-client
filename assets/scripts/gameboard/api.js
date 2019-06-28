@@ -27,7 +27,7 @@ const getGamesUnfinished = () => {
 
 const updateGame = (index, value) => {
   return $.ajax({
-    url: config.apiUrl + '/gaes/' + store.gameData.id,
+    url: config.apiUrl + '/games/' + store.gameData.id,
     method: 'PATCH',
     headers: {
       Authorization: 'Token token=' + store.user.token
