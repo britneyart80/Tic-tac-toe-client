@@ -4,9 +4,9 @@ const store = require('./../store')
 
 const gameOver = () => {
   if (store.playerX) {
-    $('.main-message').text('Player O wins! Game Over.').show()
+    $('.main-message').text('Player O wins! Click "New Game" to play again').show()
   } else {
-    $('.main-message').text('You win! Game Over.').show()
+    $('.main-message').text('You win! Click "New Game" to play again').show()
   }
 }
 
@@ -21,6 +21,7 @@ const newGameSuccess = gameData => {
   for (let i = 0; i < 9; i++) {
     $(`#${i}`).text('')
   }
+  store.playerX = true
   store.gameData = gameData.game
 }
 
@@ -29,12 +30,7 @@ const newGameFail = gameData => {
 }
 
 const updateGameSuccess = gameData => {
-  console.log('updated to', gameData)
-  if (store.playerX) {
-    $('.feedback').text("It's player X's turn")
-  } else {
-    $('.feedback').text("It's player O's turn")
-  }
+  $('.feedback').text("It's player X's turn")
 }
 
 const updateGameFail = gameData => {
@@ -60,7 +56,6 @@ const getGamesUnfinishedFailed = response => {
 }
 
 const countWins = allGames => {
-  console.log(allGames)
   let wins = 0
   const allSame = (a, b, c) => {
     if (a && b && c) {
@@ -69,7 +64,6 @@ const countWins = allGames => {
   }
   for (let i = 0; i < allGames.games.length; i++) {
     const curr = allGames.games[i]
-
     for (let i = 0; i < 9; i += 3) {
       if (allSame(curr.cells[i], curr.cells[i + 1], curr.cells[i + 2])) {
         console.log('a win!')
@@ -88,7 +82,6 @@ const countWins = allGames => {
       wins++
     }
   }
-  console.log(wins)
   $('.games-won').text(`Total games won: ${wins}`)
 }
 

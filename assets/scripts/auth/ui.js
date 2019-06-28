@@ -15,9 +15,12 @@ const failedSignUp = () => {
 }
 
 const successfulSignIn = response => {
-  $('.game-data').show()
+  for (let i = 0; i < 9; i++) {
+    $(`#${i}`).text('')
+  }
+  $('.game-data').attr('class', 'game-data visible')
   $('.feedback').text('Click New Game to play!')
-  $('section').css('width', '20vw').show()
+  $('section').attr('class', 'visible')
   $('form').trigger('reset')
   $('#sign-in-modal').modal('hide')
   $('.logins').hide()
@@ -33,6 +36,8 @@ const failedSignIn = () => {
 }
 
 const successfulSignOut = () => {
+  $('.game-data').attr('class', 'invisible')
+  $('section').attr('class', 'invisible')
   $('.main-message').text('You were signed out').css('background-color', 'green').show()
   $('.main-message').delay(2500).fadeOut()
   $('.logins').show()

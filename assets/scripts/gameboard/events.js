@@ -51,29 +51,48 @@ const allSame = (first, second, third) => {
   }
 }
 
+// Computer's move
+const computerMove = () => {
+  const cells = store.gameData.cells
+  if (cells.every(x => x !== '')) {
+  } else if (cells.some(x => x !== '')) {
+    $('.feedback').text('Computer is thinking...')
+    let index = Math.floor(Math.random() * 9)
+    while (cells[index]) {
+      index = Math.floor(Math.random() * 9)
+    }
+    setTimeout(() => { $(`#${index}`).text('O') }, 1500)
+    cells[index] = 'o'
+    store.playerX = true
+  }
+}
+
 // adds 'x' or 'o' to the clicked cell if there isnt already a piece there
 const onUpdateGame = event => {
   event.preventDefault()
-  console.log(store.gameData.cells)
-  const index = event.target.cellIndex
-  let currPlayer
-  if (store.gameData.cells[index] === '') {
-    if (store.playerX) {
-      $(`#${index}`).text('X')
-      currPlayer = 'x'
-      store.gameData.cells[index] = 'x'
-      store.playerX = false
-    } else {
-      $(`#${index}`).text('O')
-      currPlayer = 'o'
-      store.gameData.cells[index] = 'o'
-      store.playerX = true
+
+  if (!store.gameData.over) {
+    const index = event.target.cellIndex
+    let currPlayer
+    if (store.gameData.cells[index] === '') {
+      if (store.playerX) {
+        $(`#${index}`).text('X')
+        currPlayer = 'x'
+        store.gameData.cells[index] = 'x'
+        store.playerX = false
+      }
+      checkWinner()
+      if (!store.gameData.over) {
+        computerMove()
+        checkWinner()
+      }
     }
-    checkWinner()
+    setTimeout(function () {
+      api.updateGame(index, currPlayer)
+        .then(ui.updateGameSuccess)
+        .catch(ui.updateGameFail)
+    }, 1500)
   }
-  api.updateGame(index, currPlayer)
-    .then(ui.updateGameSuccess)
-    .catch(ui.updateGameFail)
 }
 
 const onNewGame = event => {

@@ -12,11 +12,14 @@
     position: absolute;
     top: 6rem;
     right: 0;
+
+    button {
+      width: 100%;
+    }
   }
 
   footer {
     align-items: flex-end;
-    background-color: blue;
     font-size: 20px;
     height: 4rem;
     justify-content: flex-end;
@@ -29,32 +32,35 @@
 
   header {
     align-items: center;
-    background-color: pink;
     height: 8rem;
     justify-content: center;
   }
 
-  section {
+
+  main {
+    align-items: center;
+    flex-direction: column;
+    height: calc(100vh - 12rem);
+    justify-content: center;
+
+    section {
       float: left;
       height: 75vh;
-      width: 0;
+      width: 20vw;
       display: flex;
       flex-direction: column;
       align-items: center;
       justify-content: space-around;
 
       .sidebar {
-        padding: 1rem;
+        padding: 1.4rem;
         text-align: center;
       }
-    }
 
-  main {
-    align-items: center;
-    background-color: beige;
-    flex-direction: column;
-    height: calc(100vh - 12rem);
-    justify-content: center;
+      ul {
+        list-style: none;
+      }
+    }
 
     .row {
       padding-left: 3vw;
@@ -99,6 +105,7 @@
     }
 
     .logins {
+      text-align: center;
       align-items: center;
       flex-direction: column;
       margin: 2em;
@@ -106,20 +113,25 @@
       > p {
         margin: 0;
       }
+
+      .logins-message {
+        margin-bottom: .5rem;
+      }
     }
 
     .game-data {
-      font-size: 1rem;
-      margin-left: 2rem;
+      font-size: 1.2rem;
+      margin-left: 1rem;
+      margin-right: 2rem;
       right: 5vw;
       width: 20vw;
 
       .feedback {
-        background-color: grey;
+        font-weight: 800;
       }
 
       .data {
-        background-color: white;
+        padding: .6rem;
         height: 30vh;
       }
 
@@ -167,14 +179,39 @@
   @media (max-width: 650px) {
 
     main {
-      flex-direction: row;
+
+      section {
+        width: 12vw;
+
+        .sidebar {
+          font-size: 0.85rem;
+          max-width: 100%;
+          button {
+            font-size: 0.6rem;
+          }
+        }
+      }
+
+      .feedback {
+        font-size: 0.85rem;
+      }
 
       .game-data {
-        font-size: 0.85rem;
+        margin-top: 2rem;
+        font-size: 0.5rem;
+
+        p {
+          margin: 0;
+        }
 
         .data {
+          padding: 0.1rem;
           height: 5vh;
           width: 40vw;
+        }
+
+        button {
+          font-size: 0.85rem;
         }
       }
 
@@ -184,8 +221,17 @@
         width: 70vw;
 
         td {
-          font-size:  20vw;
+          font-size:  15vw;
           text-align: center;
+        }
+      }
+
+      .logins {
+        text-align: center;
+        width: 50vw;
+
+        button {
+          font-size: 0.85rem;
         }
       }
     }
@@ -196,6 +242,74 @@
 
     footer {
       font-size: 15px;
+    }
+  }
+}
+
+// a basic starter theme
+#basic {
+  header {
+    background-color: rgb(135, 206, 235);
+  }
+  main {
+    background-color: rgb(247, 232, 225);
+  }
+  footer {
+    background-color: rgb(0, 156, 198);
+  }
+  button {
+    background-color: rgb(0, 156, 220);
+    border: none;
+    border-radius: 5px;
+    color: white;
+  }
+  .data {
+    background-color: rgba(255, 255, 255, .5)
+  }
+  .dropdown-menu {
+    button {
+      color: black;
+      border: none;
+      background-color: transparent;
+    }
+  }
+}
+
+// a dark theme
+#dark {
+  color: white;
+  section {
+    .modal {
+      color: black;
+    }
+  }
+  header {
+    color: rgb(255, 255, 255);
+    background-color: rgb(0, 0, 0);
+  }
+  main {
+    background-color: rgb(128, 128, 128);
+  }
+  footer {
+    background-color: rgb(47, 60, 79);
+  }
+  button {
+    background-color: rgb(64, 64, 64);
+    border: none;
+    border-radius: 5px;
+    color: white;
+  }
+  .main-message {
+    border: solid black;
+  }
+  .data {
+    background-color: rgba(255, 255, 255, .5)
+  }
+  .dropdown-menu {
+    button {
+      color: black;
+      border: none;
+      background-color: transparent;
     }
   }
 }
