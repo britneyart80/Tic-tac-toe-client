@@ -30,7 +30,6 @@ const newGameFail = gameData => {
 }
 
 const updateGameSuccess = gameData => {
-  console.log(gameData)
   if (!store.multiplayer && store.playerX) {
     setTimeout(function () {
       $('.feedback').text("It's player X's turn")
