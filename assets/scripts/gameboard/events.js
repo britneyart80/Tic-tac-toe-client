@@ -116,11 +116,6 @@ const onUpdateGame = event => {
       if (!store.gameData.over && !store.multiplayer) {
         computerMove()
         checkWinner()
-        setTimeout(function () {
-          api.updateGame(index, 'x')
-            .then(ui.updateGameSuccess)
-            .catch(ui.updateGameFail)
-        }, 1500)
       }
     }
   }
