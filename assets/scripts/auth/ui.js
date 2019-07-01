@@ -24,7 +24,7 @@ const successfulSignIn = response => {
   $('.dropdown-toggle').text(`${store.user.email}`)
   $('.logins-message').text('Sign in or Sign up to start the game!')
   $('.game-data').attr('class', 'game-data visible')
-  $('.feedback').text('Click New Game to play!').show()
+  $('.feedback').text('Click Single or Multiplayer to play!').show()
   $('section').attr('class', 'visible')
   $('form').trigger('reset')
   $('#sign-in-modal').modal('hide')
