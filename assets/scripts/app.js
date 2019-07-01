@@ -19,4 +19,5 @@ $(() => {
   $('#change-password').on('submit', authEvents.onChangePassword)
   $('.basic').on('click', themeEvents.onBasic)
   $('.dark').on('click', themeEvents.onDark)
+  $('.rainbow').on('click', themeEvents.onRainbow)
 })

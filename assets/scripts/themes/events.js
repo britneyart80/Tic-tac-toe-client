@@ -6,7 +6,12 @@ const onDark = () => {
   $('.body').attr('id', 'dark')
 }
 
+const onRainbow = () => {
+  $('.body').attr('id', 'rainbow')
+}
+
 module.exports = {
   onBasic,
-  onDark
+  onDark,
+  onRainbow
 }

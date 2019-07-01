@@ -39,6 +39,15 @@ const failedSignIn = () => {
 }
 
 const successfulSignOut = () => {
+  $('.body').attr('id', 'basic')
+  // clears starter board
+  for (let i = 0; i < 9; i++) {
+    $(`#${i}`).text('')
+  }
+  $('#0').text('X')
+  $('#4').text('O')
+  $('#5').text('X')
+  $('#8').text('O')
   $('.game-data').attr('class', 'game-data invisible')
   $('section').attr('class', 'invisible')
   $('.main-message').text('You were signed out').css('background-color', 'green').show()
