@@ -13,14 +13,9 @@ const onSinglePlayer = () => {
 }
 
 // checks for all winning scenarios
-const checkWinner = index => {
+const checkWinner = () => {
   event.preventDefault()
   let hasWin = false
-  const update = val => {
-    api.updateGame(index, val)
-      .then(console.log, ui.tie)
-      .catch(ui.updateGameFail)
-  }
 
   const cells = store.gameData.cells
   const gameOver = () => {
@@ -50,11 +45,9 @@ const checkWinner = index => {
   // checks for a draw
   if (cells.every(x => x !== '') && !hasWin) {
     store.gameData.over = true
-  }
-  if (store.playerX) {
-    update('o')
-  } else {
-    update('x')
+    api.updateGame()
+      .then(ui.tie)
+      .catch(ui.updateGameFail)
   }
 }
 
@@ -115,7 +108,7 @@ const onUpdateGame = event => {
         api.updateGame(index, 'x')
           .then(ui.updateGameSuccess)
           .catch(ui.updateGameFail)
-        checkWinner(index)
+        checkWinner()
       } else if (store.multiplayer) {
         // if it is player O's turn, update the game with o at position of index
         $(`#${index}`).text('O')
@@ -124,12 +117,12 @@ const onUpdateGame = event => {
         api.updateGame(index, 'o')
           .then(ui.updateGameSuccess)
           .catch(ui.updateGameFail)
-        checkWinner(index)
+        checkWinner()
       }
       // if single player, trigger AI
       if (!store.gameData.over && !store.multiplayer) {
         computerMove()
-        checkWinner(index)
+        checkWinner()
       }
     }
   }
