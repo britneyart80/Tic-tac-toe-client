@@ -94,37 +94,35 @@ const computerMove = () => {
 // adds 'x' or 'o' to the clicked cell if there isnt already a piece there
 const onUpdateGame = event => {
   event.preventDefault()
-  if (store.gameData !== undefined) {
-    const cells = store.gameData.cells
-    // if game is not over
-    if (!store.gameData.over) {
-      const index = event.target.cellIndex
-      // if space is not taken
-      if (cells[index] === '') {
-        // if it is player X's turn, update the game with x at position of index
-        if (store.playerX) {
-          $(`#${index}`).text('X')
-          cells[index] = 'x'
-          store.playerX = false
-          api.updateGame(index, 'x')
-            .then(ui.updateGameSuccess)
-            .catch(ui.updateGameFail)
-          checkWinner()
-        } else if (store.multiplayer) {
-          // if it is player O's turn, update the game with o at position of index
-          $(`#${index}`).text('O')
-          cells[index] = 'o'
-          store.playerX = true
-          api.updateGame(index, 'o')
-            .then(ui.updateGameSuccess)
-            .catch(ui.updateGameFail)
-          checkWinner()
-        }
-        // if single player, trigger AI
-        if (!store.gameData.over && !store.multiplayer) {
-          computerMove()
-          checkWinner()
-        }
+  const cells = store.gameData.cells
+  // if game is not over
+  if (!store.gameData.over) {
+    const index = event.target.cellIndex
+    // if space is not taken
+    if (cells[index] === '') {
+      // if it is player X's turn, update the game with x at position of index
+      if (store.playerX) {
+        $(`#${index}`).text('X')
+        cells[index] = 'x'
+        store.playerX = false
+        api.updateGame(index, 'x')
+          .then(ui.updateGameSuccess)
+          .catch(ui.updateGameFail)
+        checkWinner()
+      } else if (store.multiplayer) {
+        // if it is player O's turn, update the game with o at position of index
+        $(`#${index}`).text('O')
+        cells[index] = 'o'
+        store.playerX = true
+        api.updateGame(index, 'o')
+          .then(ui.updateGameSuccess)
+          .catch(ui.updateGameFail)
+        checkWinner()
+      }
+      // if single player, trigger AI
+      if (!store.gameData.over && !store.multiplayer) {
+        computerMove()
+        checkWinner()
       }
     }
   }
@@ -134,7 +132,7 @@ const onNewGame = event => {
   event.preventDefault()
   api.newGame()
     .then(ui.newGameSuccess)
-    .catch(console.log, ui.newGameFail)
+    .catch(ui.newGameFail)
 
   api.getAllGames()
     .then(ui.getAllGamesSuccessful)
