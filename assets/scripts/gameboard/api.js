@@ -13,17 +13,17 @@ const getAllGames = () => {
     }
   })
 }
-
-const getGamesUnfinished = () => {
-  return $.ajax({
-    url: config.apiUrl + '/games?over=false',
-    method: 'GET',
-    contentType: 'application/json',
-    headers: {
-      Authorization: 'Token token=' + store.user.token
-    }
-  })
-}
+//
+// const getGamesUnfinished = () => {
+//   return $.ajax({
+//     url: config.apiUrl + '/games?over=false',
+//     method: 'GET',
+//     contentType: 'application/json',
+//     headers: {
+//       Authorization: 'Token token=' + store.user.token
+//     }
+//   })
+// }
 
 const updateGame = (index, value) => {
   return $.ajax({
@@ -58,6 +58,6 @@ const newGame = () => {
 module.exports = {
   updateGame,
   newGame,
-  getAllGames,
-  getGamesUnfinished
+  getAllGames
+  // getGamesUnfinished
 }

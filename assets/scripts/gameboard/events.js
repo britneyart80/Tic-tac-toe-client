@@ -132,15 +132,15 @@ const onNewGame = event => {
   event.preventDefault()
   api.newGame()
     .then(ui.newGameSuccess)
-    .catch(ui.newGameFail)
+    .catch(console.log, ui.newGameFail)
 
   api.getAllGames()
     .then(ui.getAllGamesSuccessful)
     .catch(ui.getAllGamesFailed)
-
-  api.getGamesUnfinished()
-    .then(ui.getGamesUnfinishedSuccessful)
-    .catch(ui.getGamesUnfinishedFailed)
+  //
+  // api.getGamesUnfinished()
+  //   .then(ui.getGamesUnfinishedSuccessful)
+  //   .catch(ui.getGamesUnfinishedFailed)
 
   gamesWon()
 }

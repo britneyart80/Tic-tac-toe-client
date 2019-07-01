@@ -72,7 +72,7 @@ const countWins = allGames => {
   let wins = 0
   const allSame = (a, b, c) => {
     if (a && b && c) {
-      return a === b && b === c
+      return a === 'x' && a === b && b === c
     }
   }
   for (let i = 0; i < allGames.games.length; i++) {
