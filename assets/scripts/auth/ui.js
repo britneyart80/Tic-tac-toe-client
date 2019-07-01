@@ -57,6 +57,7 @@ const successfulSignOut = () => {
   $('.main-message').delay(2500).fadeOut()
   $('.logins').show()
   $('#drop-down').attr('class', 'invisible')
+  store.gameData = undefined
 }
 
 const failedSignOut = () => {
