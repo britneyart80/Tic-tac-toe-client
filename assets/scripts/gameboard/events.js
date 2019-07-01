@@ -4,8 +4,18 @@ const store = require('./../store')
 
 store.playerX = true
 
+const onMultiplayer = () => {
+  store.multiplayer = true
+}
+
+const onSinglePlayer = () => {
+  store.multiplayer = false
+}
+
 // checks for all winning scenarios
 const checkWinner = () => {
+  event.preventDefault()
+
   const cells = store.gameData.cells
   const gameOver = () => {
     store.gameData.over = true
@@ -39,6 +49,8 @@ const checkWinner = () => {
 
 // counts how many games the player won
 const gamesWon = () => {
+  event.preventDefault()
+
   api.getAllGames()
     .then(ui.countWins)
     .catch(ui.countWinsFailure)
@@ -53,17 +65,25 @@ const allSame = (first, second, third) => {
 
 // Computer's move
 const computerMove = () => {
+  event.preventDefault()
   const cells = store.gameData.cells
   if (cells.every(x => x !== '')) {
   } else if (cells.some(x => x !== '')) {
-    $('.feedback').text('Computer is thinking...')
     let index = Math.floor(Math.random() * 9)
     while (cells[index]) {
       index = Math.floor(Math.random() * 9)
     }
+
+    $('.feedback').text('Computer is thinking...')
     setTimeout(() => { $(`#${index}`).text('O') }, 1500)
     cells[index] = 'o'
     store.playerX = true
+
+    setTimeout(function () {
+      api.updateGame(index, 'o')
+        .then(ui.updateGameSuccess)
+        .catch(ui.updateGameFail)
+    }, 1500)
   }
 }
 
@@ -73,25 +93,36 @@ const onUpdateGame = event => {
 
   if (!store.gameData.over) {
     const index = event.target.cellIndex
-    let currPlayer
     if (store.gameData.cells[index] === '') {
       if (store.playerX) {
         $(`#${index}`).text('X')
-        currPlayer = 'x'
         store.gameData.cells[index] = 'x'
         store.playerX = false
-      }
-      checkWinner()
-      if (!store.gameData.over) {
-        computerMove()
+        api.updateGame(index, 'x')
+          .then(ui.updateGameSuccess)
+          .catch(ui.updateGameFail)
+        checkWinner()
+      } else if (store.multiplayer) {
+        if (!store.playerX) {
+          $(`#${index}`).text('O')
+          store.gameData.cells[index] = 'o'
+          store.playerX = true
+          api.updateGame(index, 'o')
+            .then(ui.updateGameSuccess)
+            .catch(ui.updateGameFail)
+        }
         checkWinner()
       }
+      if (!store.gameData.over && !store.multiplayer) {
+        computerMove()
+        checkWinner()
+        setTimeout(function () {
+          api.updateGame(index, 'x')
+            .then(ui.updateGameSuccess)
+            .catch(ui.updateGameFail)
+        }, 1500)
+      }
     }
-    setTimeout(function () {
-      api.updateGame(index, currPlayer)
-        .then(ui.updateGameSuccess)
-        .catch(ui.updateGameFail)
-    }, 1500)
   }
 }
 
@@ -113,6 +144,8 @@ const onNewGame = event => {
 }
 
 module.exports = {
+  onSinglePlayer,
+  onMultiplayer,
   onUpdateGame,
   onNewGame,
   checkWinner

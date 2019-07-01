@@ -137,9 +137,14 @@
         height: 30vh;
       }
 
-      #new-game {
+      #single-player,
+      #multiplayer {
         align-self: flex-end;
-        margin: .5rem 0 .5rem 0;
+        margin: .1rem 0;
+    }
+
+    p {
+      margin-bottom: 0;
     }
   }
 

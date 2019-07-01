@@ -12,7 +12,10 @@ const themeEvents = require('./themes/events.js')
 
 $(() => {
   $('.cell').on('click', gameboardEvents.onUpdateGame)
-  $('#new-game').on('click', gameboardEvents.onNewGame)
+  $('#single-player').on('click', gameboardEvents.onNewGame)
+  $('#multiplayer').on('click', gameboardEvents.onNewGame)
+  $('#single-player').on('click', gameboardEvents.onSinglePlayer)
+  $('#multiplayer').on('click', gameboardEvents.onMultiplayer)
   $('#sign-up').on('submit', authEvents.onSignUp)
   $('#sign-in').on('submit', authEvents.onSignIn)
   $('#sign-out').on('click', authEvents.onSignOut)

@@ -4,9 +4,9 @@ const store = require('./../store')
 
 const gameOver = () => {
   if (store.playerX) {
-    $('.main-message').text('Player O wins! Click "New Game" to play again').show()
+    $('.main-message').text('Player O wins! Click Single or Multi Player to play again').show()
   } else {
-    $('.main-message').text('You win! Click "New Game" to play again').show()
+    $('.main-message').text('Player X wins! Click Single or Multi Player to play again').show()
   }
 }
 
@@ -30,7 +30,16 @@ const newGameFail = gameData => {
 }
 
 const updateGameSuccess = gameData => {
-  $('.feedback').text("It's player X's turn")
+  console.log(gameData)
+  if (!store.multiplayer && store.playerX) {
+    setTimeout(function () {
+      $('.feedback').text("It's player X's turn")
+    }, 1300)
+  } else if (store.playerX) {
+    $('.feedback').text("It's player X's turn")
+  } else {
+    $('.feedback').text("It's player O's turn")
+  }
 }
 
 const updateGameFail = gameData => {
