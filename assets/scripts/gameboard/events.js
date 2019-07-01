@@ -15,6 +15,7 @@ const onSinglePlayer = () => {
 // checks for all winning scenarios
 const checkWinner = () => {
   event.preventDefault()
+  let hasWin = false
 
   const cells = store.gameData.cells
   const gameOver = () => {
@@ -26,20 +27,23 @@ const checkWinner = () => {
   for (let i = 0; i < 9; i += 3) {
     if (allSame(cells[i], cells[i + 1], cells[i + 2])) {
       gameOver()
+      hasWin = true
     }
   }
   // checks for each column
   for (let j = 0; j < 4; j++) {
     if (allSame(cells[j], cells[j + 3], cells[j + 6])) {
       gameOver()
+      hasWin = true
     }
   }
   // checks for each diagonal
   if (allSame(cells[4], cells[0], cells[8]) || allSame(cells[4], cells[2], cells[6])) {
     gameOver()
+    hasWin = true
   }
   // checks for a draw
-  if (cells.every(x => x !== '')) {
+  if (cells.every(x => x !== '') && !hasWin) {
     store.gameData.over = true
     api.updateGame()
       .then(ui.tie)
