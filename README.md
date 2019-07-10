@@ -9,6 +9,7 @@
 <li>Javascript</li>
 <li>HTML</li>
 <li>CSS/SCSS</li>
+<li>Bootstrap</li>
 
 
 ## Introduction
