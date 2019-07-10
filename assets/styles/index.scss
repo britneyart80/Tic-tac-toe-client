@@ -82,19 +82,19 @@
       width: 450px;
 
       .top {
-        border-bottom: 4px solid black;
+        border-bottom: 7px solid black;
       }
 
       .bottom {
-        border-top: 4px solid black;
+        border-top: 7px solid black;
       }
 
       .left {
-        border-right: 4px solid black;
+        border-right: 7px solid black;
       }
 
       .right {
-        border-left: 4px solid black;
+        border-left: 7px solid black;
       }
 
       .cell {
@@ -107,6 +107,9 @@
       td {
         font-size: 100px;
         text-align: center;
+        p {
+          padding-bottom: 0;
+        }
 
         &:hover {
           font-size: 105px;
@@ -239,6 +242,10 @@
         td {
           font-size:  15vw;
           text-align: center;
+
+          &:hover {
+            font-size: 16vw;
+          }
         }
       }
 
