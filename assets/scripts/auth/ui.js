@@ -19,7 +19,7 @@ const successfulSignIn = response => {
   store.user = response.user
   // clears starter board
   for (let i = 0; i < 9; i++) {
-    $(`#${i}`).text('')
+    $(`#${i}`).html('<p></p>')
   }
   $('.dropdown-toggle').text(`${store.user.email}`)
   $('.logins-message').text('Sign in or Sign up to start the game!')
@@ -42,7 +42,8 @@ const successfulSignOut = () => {
   $('.body').attr('id', 'basic')
   // clears starter board
   for (let i = 0; i < 9; i++) {
-    $(`#${i}`).text('')
+    $(`#${i}`).html('<p></p>')
+    $(`#${i}`).removeClass('blink')
   }
   $('#0').text('X')
   $('#4').text('O')

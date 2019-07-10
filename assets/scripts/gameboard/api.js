@@ -13,7 +13,7 @@ const getAllGames = () => {
     }
   })
 }
-//
+
 // const getGamesUnfinished = () => {
 //   return $.ajax({
 //     url: config.apiUrl + '/games?over=false',

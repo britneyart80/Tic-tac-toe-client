@@ -1,4 +1,8 @@
 @import '~bootstrap/scss/bootstrap';
+@import 'basic.scss';
+@import 'dark.scss';
+@import 'rainbow.scss';
+@import 'animations.scss';
 @import url('https://fonts.googleapis.com/css?family=Montserrat|Rubik+Mono+One&display=swap');
 @import url('https://fonts.googleapis.com/css?family=Fondamento|Lato&display=swap');
 @import url('https://fonts.googleapis.com/css?family=Lobster|Raleway&display=swap');
@@ -28,8 +32,8 @@
     padding: 2em;
   }
   h1 {
+    font-size: 2.5rem;
     position: relative;
-    font-size: 4em;
   }
 
   header {
@@ -103,6 +107,10 @@
       td {
         font-size: 100px;
         text-align: center;
+
+        &:hover {
+          font-size: 105px;
+        }
       }
     }
 
@@ -158,6 +166,7 @@
       }
 
       .modal-header {
+        color: black;
         align-items: center;
 
         > .modal-title {
@@ -244,155 +253,11 @@
     }
 
     h1 {
-      font-size: 10vw;
+      font-size: 5vw;
     }
 
     footer {
       font-size: 15px;
-    }
-  }
-}
-
-// a basic starter theme
-#basic {
-  header {
-    background-color: rgb(135, 206, 235);
-    font-family: 'Rubik Mono One', sans-serif;
-  }
-  main {
-    font-family: 'Montserrat', sans-serif;
-    background-color: rgb(247, 232, 225);
-  }
-  footer {
-    font-family: 'Montserrat', sans-serif;
-    background-color: rgb(0, 156, 198);
-  }
-  button {
-    background-color: rgb(0, 156, 220);
-    border: none;
-    border-radius: 5px;
-    color: white;
-  }
-  button:hover {
-    background-color: rgb(0, 70, 225);
-  }
-  .data {
-    background-color: rgba(255, 255, 255, .5)
-  }
-  .dropdown-menu {
-    button {
-      color: black;
-      border: none;
-      background-color: transparent;
-    }
-  }
-}
-
-// a dark theme
-#dark {
-  color: white;
-  section {
-    .modal {
-      color: black;
-    }
-  }
-  header {
-    font-family: 'Fondamento', cursive;
-    color: rgb(255, 255, 255);
-    background-color: rgb(0, 0, 0);
-  }
-  main {
-    font-family: 'Lato', sans-serif;
-    background-color: rgb(128, 128, 128);
-    td {
-      border-color: white;
-      color: rgb(150, 0, 0);
-    }
-  }
-  footer {
-    font-family: 'Lato', sans-serif;
-    background-color: rgb(47, 60, 79);
-  }
-  button {
-    background-color: rgb(64, 64, 64);
-    border: none;
-    border-radius: 5px;
-    color: white;
-  }
-  button:hover {
-    background-color: rgb(150, 0, 0);
-    color: rgb(255, 255, 255)
-  }
-  .main-message {
-    border: solid black;
-  }
-  .data {
-    background-color: rgba(255, 255, 255, .5)
-  }
-  .dropdown-menu {
-    button {
-      color: black;
-      border: none;
-      background-color: transparent;
-    }
-  }
-}
-
-#rainbow {
-
-  color: white;
-
-  section {
-    .modal {
-      color: black;
-    }
-    .intro {
-      background-color: rgba(0, 0, 0, .3)
-    }
-  }
-  header {
-    font-family: 'Lobster', cursive;
-    background-color: rgb(0, 0, 0)
-  }
-  main {
-    font-family: 'Raleway', sans-serif;
-    background: -webkit-linear-gradient(left, orange , yellow, green, cyan, blue, violet);
-    background: -o-linear-gradient(right, orange, yellow, green, cyan, blue, violet);
-    background: -moz-linear-gradient(right, orange, yellow, green, cyan, blue, violet);
-    background: linear-gradient(to right, orange , yellow, green, cyan, blue, violet);
-    td {
-      border-color: white;
-    }
-  }
-  footer {
-    color: -webkit-linear-gradient(left, orange , yellow, green, cyan, blue, violet);
-    color: -o-linear-gradient(right, orange, yellow, green, cyan, blue, violet);
-    color: -moz-linear-gradient(right, orange, yellow, green, cyan, blue, violet);
-    color: linear-gradient(to right, orange , yellow, green, cyan, blue, violet);
-    background-color: rgb(0, 0, 0);
-    font-family: 'Lobster', cursive;
-  }
-  button {
-    background-color: rgb(64, 64, 64);
-    border: none;
-    border-radius: 5px;
-    color: white;
-  }
-  button:hover {
-    background-image: linear-gradient(90deg, #00C0FF 0%, #FFCF00 49%, #FC4F4F 80%, #00C0FF 100%);
-    color: rgb(0, 0, 0)
-  }
-  .main-message {
-    border: solid black;
-  }
-  .data {
-    background-color: rgba(255, 255, 255, .5);
-  }
-  .dropdown-menu {
-    button {
-      color: black;
-      border: none;
-      background-color: transparent;
     }
   }
 }

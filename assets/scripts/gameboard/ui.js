@@ -2,6 +2,12 @@
 
 const store = require('./../store')
 
+const blink = (first, second, third) => {
+  $(`#${first}`).addClass('blink')
+  $(`#${second}`).addClass('blink')
+  $(`#${third}`).addClass('blink')
+}
+
 const gameOver = () => {
   if (store.playerX) {
     $('.main-message').text('Player O wins! Click Single or Multi Player to play again').show()
@@ -19,7 +25,8 @@ const newGameSuccess = gameData => {
   $('.main-message').delay(2000).fadeOut()
   $('.feedback').text("It's player X's turn")
   for (let i = 0; i < 9; i++) {
-    $(`#${i}`).text('')
+    $(`#${i}`).html('<p></p>')
+    $(`#${i}`).removeClass('blink')
   }
   store.playerX = true
   store.gameData = gameData.game
@@ -43,7 +50,7 @@ const updateGameSuccess = gameData => {
 
 const updateGameFail = gameData => {
   for (let i = 0; i < 9; i++) {
-    $(`#${i}`).text('')
+    $(`#${i}`).html('<p></p>')
   }
   $('.main-message').text('An error occured').css('background-color', 'red').show()
   $('.main-message').delay(2000).fadeOut()
@@ -111,5 +118,6 @@ module.exports = {
   getGamesUnfinishedSuccessful,
   getGamesUnfinishedFailed,
   countWins,
-  countWinsFailure
+  countWinsFailure,
+  blink
 }

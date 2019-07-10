@@ -1,0 +1,49 @@
+// a dark theme
+#dark {
+  color: white;
+  section {
+    .modal {
+      color: black;
+    }
+  }
+  header {
+    font-family: 'Fondamento', cursive;
+    color: rgb(255, 255, 255);
+    background-color: rgb(0, 0, 0);
+  }
+  main {
+    font-family: 'Lato', sans-serif;
+    background-color: rgb(128, 128, 128);
+    td {
+      border-color: white;
+      color: rgb(150, 0, 0);
+    }
+  }
+  footer {
+    font-family: 'Lato', sans-serif;
+    background-color: rgb(47, 60, 79);
+  }
+  button {
+    background-color: rgb(64, 64, 64);
+    border: none;
+    border-radius: 5px;
+    color: white;
+  }
+  button:hover {
+    background-color: rgb(150, 0, 0);
+    color: rgb(255, 255, 255)
+  }
+  .main-message {
+    border: solid black;
+  }
+  .data {
+    background-color: rgba(255, 255, 255, .5)
+  }
+  .dropdown-menu {
+    button {
+      color: black;
+      border: none;
+      background-color: transparent;
+    }
+  }
+}

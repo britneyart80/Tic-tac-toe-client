@@ -28,6 +28,7 @@ const checkWinner = () => {
     if (allSame(cells[i], cells[i + 1], cells[i + 2])) {
       gameOver()
       hasWin = true
+      ui.blink(i, i + 1, i + 2)
     }
   }
   // checks for each column
@@ -35,12 +36,20 @@ const checkWinner = () => {
     if (allSame(cells[j], cells[j + 3], cells[j + 6])) {
       gameOver()
       hasWin = true
+      ui.blink(j, j + 3, j + 6)
     }
   }
-  // checks for each diagonal
-  if (allSame(cells[4], cells[0], cells[8]) || allSame(cells[4], cells[2], cells[6])) {
+  // checks for a diagonal
+  if (allSame(cells[4], cells[0], cells[8])) {
     gameOver()
     hasWin = true
+    ui.blink(4, 0, 8)
+  }
+  // checks for other diagonal
+  if (allSame(cells[4], cells[2], cells[6])) {
+    gameOver()
+    hasWin = true
+    ui.blink(4, 2, 6)
   }
   // checks for a draw
   if (cells.every(x => x !== '') && !hasWin) {
@@ -79,7 +88,7 @@ const computerMove = () => {
     }
 
     $('.feedback').text('Computer is thinking...')
-    setTimeout(() => { $(`#${index}`).text('O') }, 1500)
+    setTimeout(() => { $(`#${index}`).html('<p>O</p>') }, 1500)
     cells[index] = 'o'
     store.playerX = true
 
@@ -102,7 +111,7 @@ const onUpdateGame = event => {
     if (cells[index] === '') {
       // if it is player X's turn, update the game with x at position of index
       if (store.playerX) {
-        $(`#${index}`).text('X')
+        $(`#${index}`).html('<p>X</p>')
         cells[index] = 'x'
         store.playerX = false
         api.updateGame(index, 'x')
@@ -111,7 +120,7 @@ const onUpdateGame = event => {
         checkWinner()
       } else if (store.multiplayer) {
         // if it is player O's turn, update the game with o at position of index
-        $(`#${index}`).text('O')
+        $(`#${index}`).html('<p>O</p>')
         cells[index] = 'o'
         store.playerX = true
         api.updateGame(index, 'o')

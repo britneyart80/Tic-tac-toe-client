@@ -1,6 +1,15 @@
 [![Link to Website] https://britneyart80.github.io/Tic-tac-toe-client/]
 
-# Tic Tac toe
+# Tic Tac Toe
+
+### Technologies used
+<li>Curl Script</li>
+<li>jQuery.ajax (HTTP requests)</li>
+<li>API Servers</li>
+<li>Javascript</li>
+<li>HTML</li>
+<li>CSS/SCSS</li>
+
 
 ## Introduction
 

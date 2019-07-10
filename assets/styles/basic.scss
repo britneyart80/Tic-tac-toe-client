@@ -1,0 +1,35 @@
+// a basic starter theme
+
+#basic {
+  header {
+    background-color: rgb(135, 206, 235);
+    font-family: 'Rubik Mono One', sans-serif;
+  }
+  main {
+    font-family: 'Montserrat', sans-serif;
+    background-color: rgb(247, 232, 225);
+  }
+  footer {
+    font-family: 'Montserrat', sans-serif;
+    background-color: rgb(0, 156, 198);
+  }
+  button {
+    background-color: rgb(0, 156, 220);
+    border: none;
+    border-radius: 5px;
+    color: white;
+  }
+  button:hover {
+    background-color: rgb(0, 70, 225);
+  }
+  .data {
+    background-color: rgba(255, 255, 255, .5)
+  }
+  .dropdown-menu {
+    button {
+      color: black;
+      border: none;
+      background-color: transparent;
+    }
+  }
+}
