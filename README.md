@@ -1,4 +1,4 @@
-![Link to Website](https://britneyart80.github.io/Tic-tac-toe-client/)
+<a href='https://britneyart80.github.io/Tic-tac-toe-client/'>Play the game!</a>
 
 # Tic Tac Toe
 
