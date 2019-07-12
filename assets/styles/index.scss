@@ -104,13 +104,13 @@
 
       }
 
+      .menu:hover {
+        font-size: 105px;
+      }
+
       td {
         font-size: 100px;
         text-align: center;
-
-        &:hover {
-          font-size: 105px;
-        }
         p {
           margin: 0;
         }
@@ -238,6 +238,10 @@
         margin-top: 1rem;
         height: 70vw;
         width: 70vw;
+
+        .menu:hover {
+          font-size: 16vw;
+        }
 
         td {
           font-size:  15vw;
