@@ -20,6 +20,7 @@ const successfulSignIn = response => {
   // clears starter board
   for (let i = 0; i < 9; i++) {
     $(`#${i}`).html('<p></p>')
+    $(`#${i}`).removeClass('menu')
   }
   $('.dropdown-toggle').text(`${store.user.email}`)
   $('.logins-message').text('Sign in or Sign up to start the game!')
@@ -43,6 +44,7 @@ const successfulSignOut = () => {
   // clears starter board
   for (let i = 0; i < 9; i++) {
     $(`#${i}`).html('<p></p>')
+    $(`#${i}`).addClass('menu')
     $(`#${i}`).removeClass('blink')
   }
   $('#0').text('X')
