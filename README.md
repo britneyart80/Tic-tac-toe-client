@@ -39,4 +39,4 @@ As a game player, I can start a new game whenever I feel like it.
 As a game player, I can see how many games I have won on this account.
 As a game player, I can see who's turn it is and which player I am.
 
-![Wireframe:](https://i.imgur.com/nOrNUgn.jpg)
+![Wireframe:](https://i.imgur.com/nOrNUgn.jpg | height=500)
