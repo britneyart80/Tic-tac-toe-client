@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html>
+    <head>
+      <meta content="https://i.imgur.com/8dG3uX6.png">
+      <title> Tic-Tac-Toe </title>
+      <meta name="viewport" content="width=device-width, initial-scale=1">
+
+      <!-- Do not add `link` tags-->
+      <link rel="shortcut icon" type="image/x-icon" href="favicon.ico">
+
+      <!-- Do not add `script` tags-->
+      <script src="public/vendor.js" type="text/javascript" charset="utf-8" defer></script>
+      <script src="public/application.js" type="text/javascript" charset="utf-8" defer></script>
+    </head>
+    <body class='body container-fluid' id='basic'>
+
+        <!-- Header and dropdown -->
+        <header class='row'>
+          <h1 class='mx-auto animate'>
+            <span>T</span>
+            <span>I</span>
+            <span>C</span>
+            <span>-</span>
+            <span>T</span>
+            <span>A</span>
+            <span>C</span>
+            <span>-</span>
+            <span>T</span>
+            <span>O</span>
+            <span>E</span>
+          </h1>
+          <!-- Drop down where you can change pass and sign out -->
+          <div id='drop-down' class="invisible">
+            <button type="button" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="font-size:12px">
+            </button>
+
+            <div class="dropdown-menu dropdown-menu-right">
+
+              <!-- Changing password -->
+              <button type="button" class="sign-up btn btn-primary" data-toggle="modal" data-target="#change-password-modal">
+                Change Password
+              </button>
+
+              <!-- Sign out button -->
+              <button id="sign-out" type="button" class='btn btn-primary'>Sign Out</button>
+            </div>
+          </div>
+        </header>
+
+
+        <main class='row'>
+
+          <!-- information sidebar -->
+          <section class='invisible'>
+            <div class='sidebar'>
+              <p class='intro'> Hi! Welcome to Tic-Tac-Toe.</p>
+              <button type="button" class="instructions btn btn-primary" data-toggle="modal" data-target="#instructionsModalCenteredScrollable">
+                How to Play
+              </button>
+              <div id="instructionsModalCenteredScrollable" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="instructionsModal" style="display: none;" aria-hidden="true">
+                <div class="modal-dialog modal-dialog-scrollable modal-dialog-centered" role="document">
+                  <div class="modal-content">
+                    <div class="modal-header">
+                      <h5 class="modal-title" id="instructionsModal">How to Play</h5>
+                      <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">×</span>
+                      </button>
+                    </div>
+                    <div class="modal-body">
+                      <p> Click on 'Single Player' to play against the computer, click on 'Multiplayer' to play with a friend on this account, and change the look of your page by selecting a theme. The game is played on a grid that's 3 squares by 3 squares. <p>
+                        <ul>
+                          <li> You are X, the computer/other player is O. Players take turns putting their marks in empty squares. </li>
+
+                          <li> The first player to get 3 of her marks in a row (up, down, across, or diagonally) is the winner. </li>
+
+                          <li> When all 9 squares are full, the game is over. If no player has 3 marks in a row, the game ends in a tie.</li>
+                        </ul>
+
+                      <p>That's all. Enjoy the game!</p>
+                    </div>
+                    <div class="modal-footer">
+                      <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </section>
+
+          <p class='main-message'></p>
+
+          <!-- The game -->
+          <div class='game row mx-auto'>
+            <!-- The gameboard and cells -->
+            <table class="board mx-2">
+              <tr>
+                <!-- top left cube -->
+                <td class='cell top left menu' id="0">X</td>
+                <!-- top center cube -->
+                <td class='cell top center menu' id="1"></td>
+                <!-- top right cube -->
+                <td class='cell top right menu' id="2"></td>
+
+              <!-- left cube -->
+                <td class='cell left menu' id="3"></td>
+                <!-- middle cube -->
+                <td class='cell middle menu' id="4">O</td>
+                <!-- right cube -->
+                <td class='cell right menu' id="5">X</td>
+
+                <!-- bottom left cube -->
+                <td class='cell bottom left menu' id="6"></td>
+                <!-- bottom center cube -->
+                <td class='cell bottom center menu'id="7"></td>
+                <!-- bottom right cube -->
+                <td class='cell bottom right menu' id="8">O</td>
+              </tr>
+            </table>
+          </div>
+
+
+          <!-- Signing In and Signing Up -->
+          <div class='logins row mx-auto'>
+
+            <p class="logins-message">Sign in or Sign up to start the game!<p>
+
+            <!-- Buttons for sign in and sign up -->
+            <div class="login-buttons">
+              <button type="button" class="sign-in btn btn-primary" data-toggle="modal" data-target="#sign-in-modal">
+                Sign In
+              </button>
+              <button type="button" class="sign-up btn btn-primary" data-toggle="modal" data-target="#sign-up-modal">
+                Sign Up
+              </button>
+            </div>
+
+            <!-- Modal for Signing In -->
+            <div class="modal fade" id="sign-in-modal" tabindex="-1" role="dialog" aria-labelledby="signInModalCenterTitle" aria-hidden="true">
+              <div class="modal-dialog modal-dialog-centered" role="document">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <h5 class="modal-title" id="signInModalCenterTitle">Sign In</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                      <span aria-hidden="true">&times;</span>
+                    </button>
+                  </div>
+                  <div class="modal-body">
+                    <form id="sign-in">
+                      <div class="inputs">
+                      <input type="email" placeholder="Email" name="credentials[email]">
+                      <input type="password" placeholder="Password" name="credentials[password]">
+                      </div>
+                      <p class="logins-fail-message" style="color:red"></p>
+                      <button>Sign in</button>
+                    </form>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Modal for Signing Up -->
+            <div class="modal fade" id="sign-up-modal" tabindex="-1" role="dialog" aria-labelledby="signUpModalCenterTitle" aria-hidden="true">
+              <div class="modal-dialog modal-dialog-centered" role="document">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <h5 class="modal-title" id="signUpModalCenterTitle">Sign Up</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                      <span aria-hidden="true">&times;</span>
+                    </button>
+                  </div>
+                  <div class="modal-body">
+                    <form id="sign-up">
+                      <div class="inputs">
+                      <input type="email" placeholder="Email" name="credentials[email]">
+                      <input type="password" placeholder="Password" name="credentials[password]">
+                      <input type="password" placeholder="Confirm password" name="credentials[password_confirmation]">
+                      </div>
+                      <p class="logins-fail-message" style="color:red"></p>
+                      <button>Sign Up!</button>
+                    </form>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+            <!-- Modal for Changing Password -->
+            <div class="modal fade" id="change-password-modal" tabindex="-1" role="dialog" aria-labelledby="passwordModalCenterTitle" aria-hidden="true">
+              <div class="modal-dialog modal-dialog-centered" role="document">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <h5 class="modal-title" id="passwordModalCenterTitle">Change Password</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                      <span aria-hidden="true">&times;</span>
+                    </button>
+                  </div>
+                  <div class="modal-body">
+                    <form id="change-password">
+                      <div class="inputs">
+                        <input type="password" placeholder="Old Password" name="passwords[old]">
+                        <input type="password" placeholder="New Password" name="passwords[new]">
+                      </div>
+                      <p class="logins-fail-message" style="color:red"></p>
+                      <button>Confirm</button>
+                    </form>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+          <!-- Game data and new game -->
+          <div class='game-data col-6 invisible'>
+            <p class='feedback'> </p>
+            <div class='data'>
+              <p class='total-games'> </p>
+              <p class='unfinished-games'></p>
+              <p class='games-won'></p>
+            </div>
+            <p> New Game </p>
+            <button id='single-player' =type="buttonRight" class="btn btn-secondary">Single Player</button>
+            <button id='multiplayer' type="button" class="btn btn-secondary">Multiplayer</button>
+            <p> Themes: </p>
+            <div class="themes btn-group" role="group" aria-label="Basic example">
+              <button type="buttonRight" class="basic btn btn-secondary">Basic</button>
+              <button type="button" class="dark btn btn-secondary">Dark</button>
+              <button type="button" class="rainbow btn btn-secondary">Rainbow</button>
+            </div>
+          </div>
+
+
+        </main>
+
+
+      <footer class='row fixed-bottom'>
+        <p> Created by Britney Chen. </p>
+      </footer>
+    </body>
+</html>
