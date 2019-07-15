@@ -195,24 +195,6 @@
     }
   }
 
-  @media (max-height: 740px) {
-    main {
-        .board {
-        margin-top: 1rem;
-        height: 40vh;
-        width: 40vh;
-
-        .menu:hover {
-          font-size: 9.5vh;
-        }
-
-        td {
-          font-size:  9vh;
-          text-align: center;
-        }
-      }
-    }
-  }
 
   @media (max-width: 650px) {
 
@@ -288,6 +270,25 @@
 
     footer {
       font-size: 15px;
+    }
+  }
+}
+
+@media (max-height: 740px) {
+  main {
+    .board {
+      margin-top: 1rem;
+      height: 40vh;
+      width: 40vh;
+
+      .menu:hover {
+        font-size: 9.5vh;
+      }
+
+      td {
+        font-size:  9vh;
+        text-align: center;
+      }
     }
   }
 }
