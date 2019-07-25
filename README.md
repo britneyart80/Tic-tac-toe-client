@@ -31,13 +31,13 @@ If I were to further this project, I would love to make the game multiplayer thr
 
 ## Wireframes and User Stories
 
-As a player, I can sign in to my existing account or create a new one.
-As a player logged in, I can change my password.
-As a player logged in, I can open instructions to understand how the game is played
-As a player logged in, I can play the tic tac toe game.
-As a game player, I can start a new game whenever I feel like it.
-As a game player, I can see how many games I have won on this account.
-As a game player, I can see who's turn it is and which player I am.
+- As a player, I can sign in to my existing account or create a new one.
+- As a player logged in, I can change my password.
+- As a player logged in, I can open instructions to understand how the game is played
+- As a player logged in, I can play the tic tac toe game.
+- As a game player, I can start a new game whenever I feel like it.
+- As a game player, I can see how many games I have won on this account.
+- As a game player, I can see who's turn it is and which player I am.
 
 <p align="center">
 <img src="https://i.imgur.com/nOrNUgn.jpg" alt="Wireframe Image" height="500">
